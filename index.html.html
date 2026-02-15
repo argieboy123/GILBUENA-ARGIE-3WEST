@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argie Gilbuena - IT Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin: 5px 0;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        header p:first-of-type {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 50px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section h2 {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        section > p {
+            font-size: 1.1em;
+            color: var(--text-light);
+            line-height: 1.8;
+            background: var(--bg-white);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 8px 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.05em;
+            color: var(--text-dark);
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        /* Strengths List */
+        section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        section > ul li {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            background: var(--bg-white);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        section > ul li:hover {
+            border-left-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--text-dark) 0%, #374151 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            font-size: 1em;
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        footer p:first-child {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        footer p:last-child {
+            margin-top: 15px;
+            opacity: 0.7;
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+                letter-spacing: 1px;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            header img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+                letter-spacing: 0.5px;
+            }
+
+            section h2 {
+                font-size: 1.5em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <!-- IMPORTANT: Put your image in the same folder as this HTML file 
+             and change the src to: src="profile.jpg" -->
+        <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/467256147_600691962295854_1259639469755251342_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeH98vTreWwkFMGLBtL6i5QYosqo2Db73OGiyqjYNvvc4ak1RzaoXkXRxMdrW_BE0aLlS1RIDNYfBq6sWCSAAZbs&_nc_ohc=kMG3JmVP-KAQ7kNvwG0ab2A&_nc_oc=AdnAErtaZRUuuMKtr1cXEd_re-Cabcwx4-0sJ4LVRNAsssot6mev5jp31wtbxIWzP7Giq4EtIABd6zONuuhgBnK3&_nc_zt=23&_nc_ht=scontent.fceb2-2.fna&_nc_gid=hMvA8kam1sdmFU9koUs-4Q&oh=00_AfsMwjxcs7pizFBIbRFbzDqMkQMU5lU9nNvXfNl0SSIQlA&oe=6994C7C3" alt="Argie Gilbuena">
+
+        <h1>Argie Gilbuena</h1>
+        <p>Future IT Professional | Web Designer | Creative Technologist</p>
+        <p>Turning ideas into interactive and impactful digital experiences.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- About Me -->
+        <section>
+            <h2>Professional Summary</h2>
+            <p>
+                I am a passionate and goal-driven Information Technology student with a strong interest 
+                in web development, digital design, and IT support services. I enjoy solving technical problems, 
+                building responsive websites, and creating creative multimedia content. My mission is to 
+                continuously improve my skills and contribute innovative solutions in the tech industry.
+            </p>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2>Education</h2>
+            <div class="card">
+                <h3>Bachelor of Science in Information Technology</h3>
+                <p><strong>Madridejos Community College</strong></p>
+                <p>Focused on programming, networking, database management, and multimedia systems.</p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section>
+            <h2>Technical Skills</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>Responsive Web Design</li>
+                        <li>Basic JavaScript</li>
+                        <li>Website Deployment</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Multimedia & Design</h3>
+                    <ul>
+                        <li>Graphic Design</li>
+                        <li>Video Editing</li>
+                        <li>Photo Manipulation</li>
+                        <li>Content Branding</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>IT & Technical Support</h3>
+                    <ul>
+                        <li>PC Assembly & Maintenance</li>
+                        <li>System Troubleshooting</li>
+                        <li>Basic Networking Setup</li>
+                        <li>Software Installation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section>
+            <h2>Featured Projects</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>
+                        Developed a responsive personal portfolio using HTML and CSS 
+                        showcasing skills, projects, and contact information.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Event Promotional Materials</h3>
+                    <p>
+                        Designed digital posters, banners, and social media graphics 
+                        for school programs and community events.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Multimedia Academic Presentations</h3>
+                    <p>
+                        Produced and edited educational videos with transitions, 
+                        sound effects, and visual enhancements for academic requirements.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strengths -->
+        <section>
+            <h2>Personal Strengths</h2>
+            <ul>
+                <li>Creative and Detail-Oriented</li>
+                <li>Strong Problem-Solving Skills</li>
+                <li>Adaptable and Quick Learner</li>
+                <li>Team Player with Leadership Potential</li>
+            </ul>
+        </section>
+
+        <!-- Contact -->
+        <section>
+            <h2>Contact Information</h2>
+
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href= "argiegilbuena5@gmail.com">argiegilbuena5@gmail.com</a></p>
+                <p><strong>Phone:</strong> <a href= "Phone:09675697200">09675697200</a></p>
+                <p><strong>Location:</strong> Madridejos, Cebu, Philippines</p>
+                <p><strong>Availability:</strong> Open for Internship & Freelance Opportunities</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Argie Gilbuena</strong></p>
+        <p>IT Student | Web Developer | Creative Digital Designer</p>
+        <p>© 2026 All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
